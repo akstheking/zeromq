@@ -1,4 +1,4 @@
-package org.akhil.zmq.pubsub;
+package org.akhil.zeromq.xpubsub;
 
 import org.zeromq.ZMQ;
 import org.zeromq.ZMQ.Context;

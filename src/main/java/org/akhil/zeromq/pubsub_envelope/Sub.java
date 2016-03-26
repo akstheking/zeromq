@@ -1,4 +1,4 @@
-package org.akhil.zmq.pubsub;
+package org.akhil.zeromq.pubsub_envelope;
 
 import org.zeromq.ZMQ;
 import org.zeromq.ZMQ.Context;
@@ -15,10 +15,12 @@ public class Sub {
 		for(String topic : topics) {
 			sub.subscribe(topic.getBytes());
 		}
-		sub.unsubscribe("0".getBytes());
+		boolean more = false;
 		while (true) {
+			String topic = sub.recvStr();
+			more = sub.hasReceiveMore();
 			String recv = sub.recvStr();
-			System.out.println("REceived : " + recv);
+			System.out.println("REceived : " + topic + " == " + recv);
 		}
 
 	}
